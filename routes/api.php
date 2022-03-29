@@ -17,7 +17,6 @@ use App\Http\Controllers\TransactionController;
 */
 
 Route::resource('transactions', TransactionController::class);
-Route::get('transactions/search/{vendor}', [TransactionController::class, 'search']);
 
 
 // Route::get('/transactions', [TransactionController::class, 'index']);

@@ -77,8 +77,8 @@ class TransactionController extends Controller
      * @param  str  $vendor
      * @return \Illuminate\Http\Response
      */
-    public function search($vendor)
+    public function owner($owner)
     {
-        return Transaction::where('vendor', 'like', '%' . $vendor . '%')->get();
+        return Transaction::where('owner',  $owner)->get();
     }
 }
