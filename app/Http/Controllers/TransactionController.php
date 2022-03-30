@@ -79,6 +79,6 @@ class TransactionController extends Controller
      */
     public function owner($owner)
     {
-        return Transaction::where('owner',  $owner)->get();
+        return Transaction::where('owner',  $owner)->orderBy('date', 'ASC')->get();
     }
 }

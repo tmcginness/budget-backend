@@ -18,6 +18,3 @@ use App\Http\Controllers\TransactionController;
 Route::get('/', function () {
     return view('welcome');
 });
-
-
-Route::get('/owner/{vendor}', [TransactionController::class, 'owner']);
