@@ -17,6 +17,7 @@ use App\Http\Controllers\TransactionController;
 */
 
 Route::resource('transactions', TransactionController::class);
+Route::get('/owner/{owner}', [TransactionController::class, 'owner']);
 
 
 // Route::get('/transactions', [TransactionController::class, 'index']);
