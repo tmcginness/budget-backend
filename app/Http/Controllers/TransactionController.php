@@ -14,7 +14,7 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        return Transaction::orderBy('date', 'ASC')->get();
+        return Transaction::orderBy('date', 'DESC')->get();
     }
 
     /**
@@ -102,6 +102,6 @@ class TransactionController extends Controller
      */
     public function sum($owner)
     {
-        return Transaction::where('owner',  $owner)->select([Transaction::raw("SUM(price) as total_transactions"), Transaction::raw("category as category")])->groupBy('category')->get();
+        return Transaction::where('owner',  $owner)->select([Transaction::raw("SUM(price) as total_transactions"), Transaction::raw("category as category"), Transaction::raw("COUNT(price) as count")])->groupBy('category')->get();
     }
 }
