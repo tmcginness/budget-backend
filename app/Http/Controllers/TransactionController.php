@@ -72,13 +72,36 @@ class TransactionController extends Controller
 
 
     /**
-     * Search for a transaction
+     * Get All transactions for an owner
      *
-     * @param  str  $vendor
+     * @param  str  $owner
      * @return \Illuminate\Http\Response
      */
     public function owner($owner)
     {
         return Transaction::where('owner',  $owner)->orderBy('date', 'ASC')->get();
+    }
+
+    /**
+     * Get all uniqure categories for a user
+     *
+     * @param  str  $owner
+     * @return \Illuminate\Http\Response
+     */
+    public function categories($owner)
+    {
+        return Transaction::where('owner',  $owner)->distinct('category')->get('category');
+    }
+
+
+    /**
+     * Get all uniqure categories for a user as well as the sum of those transactions
+     *
+     * @param  str  $owner
+     * @return \Illuminate\Http\Response
+     */
+    public function sum($owner)
+    {
+        return Transaction::where('owner',  $owner)->select([Transaction::raw("SUM(price) as total_transactions"), Transaction::raw("category as category")])->groupBy('category')->get();
     }
 }

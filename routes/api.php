@@ -18,6 +18,8 @@ use App\Http\Controllers\TransactionController;
 
 Route::resource('transactions', TransactionController::class);
 Route::get('/owner/{owner}', [TransactionController::class, 'owner']);
+Route::get('/categories/{owner}', [TransactionController::class, 'categories']);
+Route::get('/sum/{owner}', [TransactionController::class, 'sum']);
 
 
 // Route::get('/transactions', [TransactionController::class, 'index']);
